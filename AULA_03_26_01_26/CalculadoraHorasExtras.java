@@ -1,5 +1,3 @@
-//31-    Calculadora de IMC: Peça peso (kg) e altura (cm), calcule o IMC e categorize.
-
 package AULA_03_26_01_26;
 
 import java.util.Scanner;

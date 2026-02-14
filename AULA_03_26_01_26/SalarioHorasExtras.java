@@ -1,1 +1,0 @@
-//32-    Folha de Pagamento Simples: Calcule salário com horas extras (1.5x após 40h).
