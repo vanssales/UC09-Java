@@ -6,9 +6,11 @@ public class AnaliseMeteorologica {
     public static double calcularMediaPonderadaTemperatura(double maxtemp, double mintemp) {
 
         // validação de temperatura
-        if (maxtemp > -50 && maxtemp < 60) {
+        if (maxtemp > -50 && maxtemp < 60) 
+        {
             System.out.println("Temperatura válida.");
-        } else 
+        } 
+        else 
         {
             System.out.println("Temperatura inválida.");
         }
@@ -20,37 +22,40 @@ public class AnaliseMeteorologica {
     // O método 2 classifica o clima
     public static String classificarClima(double tempMedia, int umidadeMedia) {
 
-        if (tempMedia > 30 && umidadeMedia > 75) {
+        if (tempMedia > 30 && umidadeMedia > 75) 
+        {
             return "MUITO QUENTE E ÚMIDO";
         }
-        if (tempMedia >= 20 && tempMedia <= 25 && umidadeMedia >= 50 && umidadeMedia <= 70) {
+        if (tempMedia >= 20 && tempMedia <= 25 && umidadeMedia >= 50 && umidadeMedia <= 70) 
+        {
             return "CONFORTAVEL";
         }
-        if (tempMedia < 15 && umidadeMedia < 50) {
+        if (tempMedia < 15 && umidadeMedia < 50) 
+        {
             return "FRIO E SECO";
         }
         return "TEMPERATURA MODERADA";
     }
 
     //O método 3 identifica a cidade com maior diferença de temperatura entre a mínima e a máxima
-    public static int identificarCidadeComMaiorAmplitudeTermica(double[][] temperaturas) {
-
+    public static int identificarCidadeComMaiorAmplitudeTermica(double[][] temperaturas) 
+    {
         int indiceMaior = 0;
         double maiorAmplitude = 0;
 
-        for (int i = 0; i < temperaturas.length; i++) {
-
+        for (int i = 0; i < temperaturas.length; i++) 
+        {
             double max = temperaturas[i][0];
             double min = temperaturas[i][1];
 
             double amplitude = max - min;
 
-            if (amplitude > maiorAmplitude) {
+            if (amplitude > maiorAmplitude) 
+            {
                 maiorAmplitude = amplitude;
                 indiceMaior = i;
             }
         }
-
         return indiceMaior;
     }
 
@@ -67,19 +72,17 @@ public class AnaliseMeteorologica {
             double media = calcularMediaPonderadaTemperatura(max, min);
 
             int soma = 0;
-            for (int j = 0; j < umidades[i].length; j++) {
-                soma += umidades[i][j];
+            for (int j = 0; j < umidades[i].length; j++) 
+            {
+                soma = soma + umidades[i][j];
             }
 
             int umidadeMedia = soma / umidades[i].length;
-
             String clima = classificarClima(media, umidadeMedia);
-
             System.out.println((i + 1) + " | " + max + " | " + min + " | " + media + " | " + umidadeMedia + " | " + clima);
         }
 
         int cidade = identificarCidadeComMaiorAmplitudeTermica(temperaturas);
-
         System.out.println("\n Cidade com maior amplitude térmica: " + (cidade + 1));
     }
 
