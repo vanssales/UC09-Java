@@ -65,59 +65,72 @@ public class AnaliseMeteorologica {
         return indiceMaior;
     }
 
-    //Impressao de relatorio, conforme solicitado
-    public static void gerarRelatorio(double[][] temperaturas, double [][] umidades){
+    // Impressao de relatorio, conforme solicitado
+    public static void gerarRelatorio(double[][] temperaturas, int [][] umidades){
 
+        // imprime o cabeçalho da tabela
         System.out.println("CIDADE | T.MAX | T. MIN | T.MED | UMIDADE | CLIMA");
 
+        // percorre todas as cidades
         for(int i=0; i < temperaturas.length; i++)
         {
+            // pega temperatura maxima e minima da cidade
             double max = temperaturas [i][0];
             double min = temperaturas [i][1];
 
+            // calcula a media ponderada da temperatura
             double media = calcularMediaPonderadaTemperatura(max, min);
 
+            // variavel para somar as umidades
             double soma = 0;   // ALTERADO PARA DOUBLE
 
+            // percorre as 3 umidades da cidade (manha, tarde, noite)
             for (int j=0; j< umidades[i].length; j++)
             {
                 soma = soma + umidades [i][j];
             }
 
+            // calcula a media da umidade
             double umidadeMedia = soma / umidades[i].length;
+
+            // classifica o clima da cidade
             String clima = classificarClima(media, umidadeMedia);
 
+            // imprime os dados da cidade na tabela
             System.out.printf("%d      | %.2f | %.2f  | %.2f    | %.1f | %s\n",
                     (i+1), max, min, media, umidadeMedia, clima); // UMIDADE COM 1 CASA
         }
 
+        // identifica a cidade com maior amplitude termica
         int cidade = identificarCidadeComMaiorAmplitudeTermica (temperaturas);
+
+        // imprime o resultado
         System.out.println("\n Cidade com maior amplitude térmica: " + (cidade + 1));
     }
 
     //------------------Método Principal-----------------------//
     public static void main (String[] args){
 
-        double [][] temperaturas =
-        {
-            {32.5,22.1},
-            {28.3,18.7},
-            {35.8,24.9},
-            {30.2,20.5},
-            {25.7,15.3}
+        // Temperaturas: [máxima, mínima] para 5 cidades
+        double[][] temperaturas = {
+            {32.5, 22.1},  // Cidade 1
+            {28.3, 18.7},  // Cidade 2
+            {35.8, 24.9},  // Cidade 3
+            {30.2, 20.5},  // Cidade 4
+            {25.7, 15.3}   // Cidade 5
         };
 
-        double [][] umidades =
-        {
-            {85, 60, 75},
-            {78, 55, 70},
-            {90, 65, 80},
-            {82, 58, 72},
-            {75, 50, 68}
+        // Umidades: [manhã, tarde, noite] para 5 cidades
+        int[][] umidades = {
+            {85, 60, 75},  // Cidade 1
+            {78, 55, 70},  // Cidade 2
+            {90, 65, 80},  // Cidade 3
+            {82, 58, 72},  // Cidade 4
+            {75, 50, 68}   // Cidade 5
         };
 
         gerarRelatorio(temperaturas, umidades);
 
-    }
-
+    }    
+  
 }
