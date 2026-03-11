@@ -72,8 +72,6 @@ public class AnaliseMeteorologica {
         System.out.println("CIDADE | T.MAX | T. MIN | T.MED | UMIDADE | CLIMA");
 
        
-
-
         for(int i=0; i < temperaturas.length; i++)
         {
             // pega temperatura maxima e minima da cidade
