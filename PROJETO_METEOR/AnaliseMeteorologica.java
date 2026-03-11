@@ -1,3 +1,8 @@
+/*
+Nome: Vanessa Alessandra 
+Ajudado pela IA CLOUDE
+*/
+
 package PROJETO_METEOR;
 
 public class AnaliseMeteorologica {
