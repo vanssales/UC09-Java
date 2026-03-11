@@ -78,7 +78,7 @@ public class AnaliseMeteorologica {
         {
             // pega temperatura maxima e minima da cidade
             // percorre todas as cidades
-            //System.out.println("Umidades lenght colunas:"+temperaturas[i].length); -> linha de teste apenas
+            //System.out.println("Umidades lenght colunas:"+temperaturas[i].length); //-> linha de teste apenas
 
             double max = temperaturas [i][0];
             double min = temperaturas [i][1];
