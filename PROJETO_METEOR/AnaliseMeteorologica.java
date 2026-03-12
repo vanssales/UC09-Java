@@ -19,7 +19,7 @@ public class AnaliseMeteorologica {
         {
             //System.out.println("Temperatura inválida.");
         }
-
+''
         double mediaPondTemp = (maxTemp * 0.7) + (minTemp * 0.3);
         return mediaPondTemp;
     }
