@@ -1,0 +1,32 @@
+package AULA_06_04_02_26;
+
+import java.util.Scanner;
+
+public class imprimirMaximo {
+
+    //Função que retorna a distancia entre 2 pontos
+    public static double maximo(double xvalor1, double xvalor2) 
+    {
+        if (xvalor1>=xvalor2)
+        return xvalor1
+        else 
+        return xvalor2
+    }
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Digite o valor 1:");
+        double valor1 = in.nextDouble();
+
+        System.out.println("Digite o valor 2:");
+        double valor2 = in.nextDouble();
+
+        maximo(valor1,valor2);
+        
+        System.out.println("valor máximo = " + valormaximo);
+
+        in.close();
+    }
+}
