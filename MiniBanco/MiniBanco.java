@@ -12,9 +12,19 @@ public class MiniBanco {
     System.out.println("2 - Sacar");
     System.out.println("3 - Consultar Saldo");
     System.out.println("4 - Ver Extrato");
-    System.out.println("5 - Sair");
+    System.out.println("0 - Sair");
     System.out.println("-----------------------");
     System.out.print("Escolha a sua opção: ");
+    }
+
+    static double depositar(double saldo, double valor)
+    {
+        return saldo + valor;        
+    }
+
+    static void exibirSaldo(double saldo)
+    {
+        System.out.printf("Saldo atual: R$ %.2f\n", saldo);
     }
     
     public static void main(String[] args) {
@@ -39,31 +49,42 @@ public class MiniBanco {
             opcao=scanner.nextInt();
 
                 if (opcao == 1) {
+                    //Implementar o deposito
+                    System.out.println("-----------------------");
+                    System.out.println("Valor a depositar: RS: ");
+                    double valor = scanner.nextDouble();
+                    saldo=depositar(saldo, valor);
+                    exibirSaldo(saldo);
                     System.out.println(" Depositar - em breve");
                     System.out.println("-----------------------");
                 }
 
                 else if (opcao == 2) {
+                    System.out.println("-----------------------");
                     System.out.println(" Saca - em breve");
                     System.out.println("-----------------------");
                 }
 
                 else if (opcao == 3) {
+                    System.out.println("-----------------------");
                     System.out.println(" Consultar Saldo");
                     System.out.println("-----------------------");
                 }
 
                 else if (opcao == 4) {
+                    System.out.println("-----------------------");
                     System.out.println(" Extrato - em breve");
                     System.out.println("-----------------------");
                 }
 
                 else if (opcao == 0) {
+                    System.out.println("-----------------------");
                     System.out.println("Até logo," + nome + "!");
                     System.out.println("-----------------------");
                 }
 
                 else {
+                    System.out.println("-----------------------");
                     System.out.println("Opção inválida!");
                     System.out.println("-----------------------");
                 }
