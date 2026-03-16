@@ -32,8 +32,44 @@ public class MiniBanco {
         // Saída formatada usando printf
         System.out.printf("Olá, %s! Seu saldo atual é R$ %.2f%n", nome, saldo);
 
-        exibirMenu();
+        while (opcao!=0)
+        {
+            exibirMenu();
 
+            opcao=scanner.nextInt();
+
+                if (opcao == 1) {
+                    System.out.println(" Depositar - em breve");
+                    System.out.println("-----------------------");
+                }
+
+                else if (opcao == 2) {
+                    System.out.println(" Saca - em breve");
+                    System.out.println("-----------------------");
+                }
+
+                else if (opcao == 3) {
+                    System.out.println(" Consultar Saldo");
+                    System.out.println("-----------------------");
+                }
+
+                else if (opcao == 4) {
+                    System.out.println(" Extrato - em breve");
+                    System.out.println("-----------------------");
+                }
+
+                else if (opcao == 5) {
+                    System.out.println("Até logo," + nome + "!");
+                    System.out.println("-----------------------");
+                }
+
+                else {
+                    System.out.println("Opção inválida!");
+                    System.out.println("-----------------------");
+                }
+        }
+
+   
         scanner.close();
     }
 }
