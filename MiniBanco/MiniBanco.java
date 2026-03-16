@@ -58,7 +58,7 @@ public class MiniBanco {
                     System.out.println("-----------------------");
                 }
 
-                else if (opcao == 5) {
+                else if (opcao == 0) {
                     System.out.println("Até logo," + nome + "!");
                     System.out.println("-----------------------");
                 }
