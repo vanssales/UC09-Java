@@ -4,6 +4,19 @@ import java.util.Scanner;
 
 public class MiniBanco {
 
+    static void exibirMenu() {
+    System.out.println("**********************");
+    System.out.println("    Bem-vindo ao MiniBanco!    ");
+    System.out.println("**********************");
+    System.out.println("1 - Depositar");
+    System.out.println("2 - Sacar");
+    System.out.println("3 - Consultar Saldo");
+    System.out.println("4 - Ver Extrato");
+    System.out.println("5 - Sair");
+    System.out.println("-----------------------");
+    System.out.print("Escolha a sua opção: ");
+    }
+    
     public static void main(String[] args) {
         System.out.println("MiniBanco iniciado!");
         Scanner scanner = new Scanner(System.in);
@@ -18,6 +31,8 @@ public class MiniBanco {
 
         // Saída formatada usando printf
         System.out.printf("Olá, %s! Seu saldo atual é R$ %.2f%n", nome, saldo);
+
+        exibirMenu();
 
         scanner.close();
     }
