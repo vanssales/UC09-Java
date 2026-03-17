@@ -125,7 +125,7 @@ public class MiniBanco {
                 else if (opcao == 3) {
                     System.out.println("-----------------------");
                     System.out.println(" Consultar Saldo");
-                    //exibirSaldo(saldo);
+                    exibirSaldo(saldo);
                     System.out.println("-----------------------");
                 }
 
