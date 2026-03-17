@@ -26,6 +26,11 @@ public class MiniBanco {
     {
         System.out.printf("Saldo atual: R$ %.2f\n", saldo);
     }
+
+    static boolean valorEvalido(double valor)
+    {
+        return valor > 0;
+    }
     
     public static void main(String[] args) {
         System.out.println("MiniBanco iniciado!");
@@ -53,10 +58,18 @@ public class MiniBanco {
                     System.out.println("-----------------------");
                     System.out.println("Valor a depositar: RS: ");
                     double valor = scanner.nextDouble();
-                    saldo=depositar(saldo, valor);
-                    exibirSaldo(saldo);
-                    System.out.println(" Depositar - em breve");
-                    System.out.println("-----------------------");
+                        if (!valorEvalido(valor)){
+                            System.out.println("Atenção. Valor inválido! Valor deve ser maior que zero");
+                            System.out.println("-----------------------");
+                        }
+                        else
+                        {
+                            saldo=depositar(saldo, valor);
+                            exibirSaldo(saldo);
+                            System.out.println(" Deposito realizado!");
+                            System.out.println("-----------------------");
+                        }
+                  
                 }
 
                 else if (opcao == 2) {
