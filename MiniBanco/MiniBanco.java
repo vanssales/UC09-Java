@@ -4,6 +4,28 @@ import java.util.Scanner;
 
 public class MiniBanco {
 
+    static final double LIMITE_SAQUE = 1000.00;
+    static final double TAXA_SAQUE = 0.02;
+
+    static double calcularTotalSaque(double valor){
+        return valor = (valor + TAXA_SAQUE);
+    }
+
+    static boolean dentroDoLimite(double valor){
+        return valor <= LIMITE_SAQUE;
+
+    }
+
+    static boolean saldoSuficiente(double saldo, double valor)
+    {
+        return saldo >= calcularTotalSaque(valor);
+    }
+
+    static double sacar(double saldo, double valor)
+    {
+        return saldo - calcularTotalSaque(valor);
+    }
+
     static void exibirMenu() {
     System.out.println("**********************");
     System.out.println("    Bem-vindo ao MiniBanco!    ");
@@ -72,15 +94,38 @@ public class MiniBanco {
                   
                 }
 
-                else if (opcao == 2) {
-                    System.out.println("-----------------------");
-                    System.out.println(" Saca - em breve");
-                    System.out.println("-----------------------");
+                else if (opcao == 2) 
+                {
+                    System.out.println("Valor a sacar: R$: ");
+                    double valorSaque = scanner.nextDouble();
+
+                    if (!valorEvalido(valorSaque)) {
+                        System.out.println("Atenção. Valor inválido! Valor deve ser maior que zero");
+                        System.out.println("-----------------------");
+                    }
+
+                    else if (!dentroDoLimite(valorSaque)) {
+                        System.out.printf("Limite excedido. Máximo R$ %.2f%n", LIMITE_SAQUE);
+                        System.out.println("-----------------------");
+                    }
+
+                    else if (!saldoSuficiente(saldo, valorSaque)) {
+                        System.out.println("Atenção. Saldo insuficiente");
+                        System.out.println("-----------------------");
+                    }
+
+                    else {
+                        double taxa = valorSaque * TAXA_SAQUE;
+                        saldo = sacar(saldo, valorSaque);
+                        System.out.printf("Saque realizado. Taxa cobrada R$ %.2f%n", taxa);
+                        exibirSaldo(saldo);
+                    }
                 }
 
                 else if (opcao == 3) {
                     System.out.println("-----------------------");
                     System.out.println(" Consultar Saldo");
+                    //exibirSaldo(saldo);
                     System.out.println("-----------------------");
                 }
 
