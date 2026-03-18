@@ -97,9 +97,9 @@ public class MiniBanco {
         int opcao = -1;
 
         // Entrada do nome do usuário
-        System.out.print("Digite seu nome: ");
+        System.out.print("Digite apenas seu primeiro nome: ");
         //String nome = scanner.next();
-        String nome = scanner.nextLine();
+        String nome = scanner.next();
 
         // Saída formatada usando printf
         System.out.printf("Olá, %s! Seu saldo atual é R$ %.2f%n", nome, saldo);
