@@ -54,9 +54,43 @@ public class MiniBanco {
         return valor > 0;
     }
     
+    static void exibirExtrato(String[] extrato, int totalLinhas)
+    {
+        System.out.println("\n ----------------Extrato-----------------");
+
+        if (totalLinhas==0)
+        {
+            System.out.println("Nenhuma movimentação!");
+        }
+        else
+        {
+
+            for(int i=0; i<totalLinhas; i++)
+            {
+                System.out.println(""+ extrato[i]);
+
+            }
+
+        }
+        System.out.println("-------------------------------------------");
+
+    }
+
+
+    static int registrar(String[] extrato, int totalLinhas, String linha)
+    {
+        extrato[totalLinhas] = linha;
+        return totalLinhas + 1;
+    }
+    
+
     public static void main(String[] args) {
         System.out.println("MiniBanco iniciado!");
         Scanner scanner = new Scanner(System.in);
+
+        //variáveis de extrato
+        String[] extrato = new String[50];
+        int totalLinhas = 0; 
 
         // Variáveis principais da conta
         double saldo = 0.0;
@@ -64,7 +98,8 @@ public class MiniBanco {
 
         // Entrada do nome do usuário
         System.out.print("Digite seu nome: ");
-        String nome = scanner.next();
+        //String nome = scanner.next();
+        String nome = scanner.nextLine();
 
         // Saída formatada usando printf
         System.out.printf("Olá, %s! Seu saldo atual é R$ %.2f%n", nome, saldo);
@@ -80,7 +115,8 @@ public class MiniBanco {
                     System.out.println("-----------------------");
                     System.out.println("Valor a depositar: RS: ");
                     double valor = scanner.nextDouble();
-                        if (!valorEvalido(valor)){
+                        if (!valorEvalido(valor))
+                        {
                             System.out.println("Atenção. Valor inválido! Valor deve ser maior que zero");
                             System.out.println("-----------------------");
                         }
@@ -90,6 +126,7 @@ public class MiniBanco {
                             exibirSaldo(saldo);
                             System.out.println(" Deposito realizado!");
                             System.out.println("-----------------------");
+                            totalLinhas = registrar(extrato, totalLinhas, String.format("DEPÓSITO + R$ %.2f => Saldo R$ %.2f", valor, saldo));
                         }
                   
                 }
@@ -117,8 +154,11 @@ public class MiniBanco {
                     else {
                         double taxa = valorSaque * TAXA_SAQUE;
                         saldo = sacar(saldo, valorSaque);
-                        System.out.printf("Saque realizado. Taxa cobrada R$ %.2f%n", taxa);
-                        exibirSaldo(saldo);
+                        /*System.out.printf("Saque realizado. Taxa cobrada R$ %.2f%n", taxa);
+                        exibirSaldo(saldo);*/
+                        System.out.printf("Saque realizado. Taxa cobrada: R$ %.2f%n", taxa);
+                        totalLinhas = registrar(extrato, totalLinhas, String.format("SAQUE - R$ %.2f => Saldo R$ %.2f", valorSaque, saldo));
+                        
                     }
                 }
 
@@ -133,12 +173,16 @@ public class MiniBanco {
                     System.out.println("-----------------------");
                     System.out.println(" Extrato - em breve");
                     System.out.println("-----------------------");
+                    exibirExtrato(extrato, totalLinhas);
+
                 }
 
                 else if (opcao == 0) {
+                    exibirExtrato(extrato, totalLinhas);
                     System.out.println("-----------------------");
                     System.out.println("Até logo," + nome + "!");
                     System.out.println("-----------------------");
+
                 }
 
                 else {
